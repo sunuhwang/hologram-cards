@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+    <body><div class="cards"></div></body>
+<script>
+
+const cardImageUrls = [
+"https://images.pokemontcg.io/sv3pt5/2_hires.png",
+"https://images.pokemontcg.io/sv3pt5/1_hires.png",
+"https://images.pokemontcg.io/sv3pt5/3_hires.png",
+"https://images.pokemontcg.io/sv3pt5/7_hires.png",
+"https://images.pokemontcg.io/sv3pt5/19_hires.png",
+"https://images.pokemontcg.io/sv3pt5/8_hires.png",
+"https://images.pokemontcg.io/sv3pt5/23_hires.png",
+"https://images.pokemontcg.io/sv3pt5/9_hires.png",
+"https://images.pokemontcg.io/sv3pt5/24_hires.png",
+"https://images.pokemontcg.io/sv3pt5/12_hires.png",
+"https://images.pokemontcg.io/sv3pt5/25_hires.png",
+"https://images.pokemontcg.io/sv3pt5/16_hires.png",
+"https://images.pokemontcg.io/sv3pt5/29_hires.png",
+"https://images.pokemontcg.io/sv3pt5/21_hires.png",
+"https://images.pokemontcg.io/sv3pt5/33_hires.png",
+"https://images.pokemontcg.io/sv3pt5/30_hires.png",
+"https://images.pokemontcg.io/sv3pt5/34_hires.png",
+"https://images.pokemontcg.io/sv3pt5/32_hires.png",
+"https://images.pokemontcg.io/sv3pt5/35_hires.png",
+"https://images.pokemontcg.io/sv3pt5/36_hires.png",
+"https://images.pokemontcg.io/sv3pt5/44_hires.png",
+"https://images.pokemontcg.io/sv3pt5/45_hires.png",
+"https://images.pokemontcg.io/sv3pt5/46_hires.png",
+"https://images.pokemontcg.io/sv3pt5/51_hires.png",
+"https://images.pokemontcg.io/sv3pt5/47_hires.png",
+"https://images.pokemontcg.io/sv3pt5/50_hires.png",
+"https://images.pokemontcg.io/sv3pt5/4_hires.png",
+"https://images.pokemontcg.io/sv3pt5/14_hires.png",
+"https://images.pokemontcg.io/sv3pt5/5_hires.png",
+"https://images.pokemontcg.io/sv3pt5/6_hires.png",
+"https://images.pokemontcg.io/sv3pt5/10_hires.png",
+"https://images.pokemontcg.io/sv3pt5/11_hires.png",
+"https://images.pokemontcg.io/sv3pt5/13_hires.png",
+"https://images.pokemontcg.io/sv3pt5/17_hires.png",
+"https://images.pokemontcg.io/sv3pt5/18_hires.png",
+"https://images.pokemontcg.io/sv3pt5/26_hires.png",
+"https://images.pokemontcg.io/sv3pt5/27_hires.png",
+"https://images.pokemontcg.io/sv3pt5/28_hires.png",
+"https://images.pokemontcg.io/sv3pt5/31_hires.png",
+"https://images.pokemontcg.io/sv3pt5/39_hires.png",
+"https://images.pokemontcg.io/sv3pt5/40_hires.png",
+"https://images.pokemontcg.io/sv3pt5/41_hires.png",
+"https://images.pokemontcg.io/sv3pt5/43_hires.png",
+"https://images.pokemontcg.io/sv3pt5/49_hires.png",
+"https://images.pokemontcg.io/sv3pt5/15_hires.png",
+"https://images.pokemontcg.io/sv3pt5/20_hires.png",
+"https://images.pokemontcg.io/sv3pt5/22_hires.png",
+"https://images.pokemontcg.io/sv3pt5/37_hires.png",
+"https://images.pokemontcg.io/sv3pt5/38_hires.png",
+"https://images.pokemontcg.io/sv3pt5/42_hires.png",
+"https://images.pokemontcg.io/sv3pt5/48_hires.png",
+"https://images.pokemontcg.io/sv3pt5/52_hires.png",
+"https://images.pokemontcg.io/sv3pt5/53_hires.png",
+"https://images.pokemontcg.io/sv3pt5/59_hires.png",
+"https://images.pokemontcg.io/sv3pt5/54_hires.png",
+"https://images.pokemontcg.io/sv3pt5/60_hires.png",
+"https://images.pokemontcg.io/sv3pt5/61_hires.png",
+"https://images.pokemontcg.io/sv3pt5/71_hires.png",
+"https://images.pokemontcg.io/sv3pt5/78_hires.png",
+"https://images.pokemontcg.io/sv3pt5/82_hires.png",
+"https://images.pokemontcg.io/sv3pt5/85_hires.png",
+"https://images.pokemontcg.io/sv3pt5/92_hires.png",
+"https://images.pokemontcg.io/sv3pt5/94_hires.png",
+"https://images.pokemontcg.io/sv3pt5/95_hires.png",
+"https://images.pokemontcg.io/sv3pt5/58_hires.png",
+"https://images.pokemontcg.io/sv3pt5/64_hires.png",
+"https://images.pokemontcg.io/sv3pt5/66_hires.png",
+"https://images.pokemontcg.io/sv3pt5/69_hires.png",
+"https://images.pokemontcg.io/sv3pt5/72_hires.png",
+"https://images.pokemontcg.io/sv3pt5/73_hires.png",
+"https://images.pokemontcg.io/sv3pt5/76_hires.png",
+"https://images.pokemontcg.io/sv3pt5/77_hires.png",
+"https://images.pokemontcg.io/sv3pt5/79_hires.png",
+"https://images.pokemontcg.io/sv3pt5/83_hires.png",
+"https://images.pokemontcg.io/sv3pt5/84_hires.png",
+"https://images.pokemontcg.io/sv3pt5/56_hires.png",
+"https://images.pokemontcg.io/sv3pt5/63_hires.png",
+"https://images.pokemontcg.io/sv3pt5/67_hires.png",
+"https://images.pokemontcg.io/sv3pt5/68_hires.png",
+"https://images.pokemontcg.io/sv3pt5/70_hires.png",
+"https://images.pokemontcg.io/sv3pt5/75_hires.png",
+"https://images.pokemontcg.io/sv3pt5/81_hires.png",
+"https://images.pokemontcg.io/sv3pt5/86_hires.png",
+"https://images.pokemontcg.io/sv3pt5/88_hires.png",
+"https://images.pokemontcg.io/sv3pt5/93_hires.png",
+"https://images.pokemontcg.io/sv3pt5/55_hires.png",
+"https://images.pokemontcg.io/sv3pt5/57_hires.png",
+"https://images.pokemontcg.io/sv3pt5/62_hires.png",
+"https://images.pokemontcg.io/sv3pt5/65_hires.png",
+"https://images.pokemontcg.io/sv3pt5/74_hires.png",
+"https://images.pokemontcg.io/sv3pt5/80_hires.png",
+"https://images.pokemontcg.io/sv3pt5/87_hires.png",
+"https://images.pokemontcg.io/sv3pt5/89_hires.png",
+"https://images.pokemontcg.io/sv3pt5/90_hires.png",
+"https://images.pokemontcg.io/sv3pt5/91_hires.png",
+"https://images.pokemontcg.io/sv3pt5/97_hires.png",
+"https://images.pokemontcg.io/sv3pt5/104_hires.png",
+"https://images.pokemontcg.io/sv3pt5/105_hires.png",
+"https://images.pokemontcg.io/sv3pt5/106_hires.png",
+"https://images.pokemontcg.io/sv3pt5/107_hires.png",
+"https://images.pokemontcg.io/sv3pt5/112_hires.png",
+"https://images.pokemontcg.io/sv3pt5/115_hires.png",
+"https://images.pokemontcg.io/sv3pt5/117_hires.png",
+"https://images.pokemontcg.io/sv3pt5/119_hires.png",
+"https://images.pokemontcg.io/sv3pt5/120_hires.png",
+"https://images.pokemontcg.io/sv3pt5/126_hires.png",
+"https://images.pokemontcg.io/sv3pt5/128_hires.png",
+"https://images.pokemontcg.io/sv3pt5/136_hires.png",
+"https://images.pokemontcg.io/sv3pt5/138_hires.png",
+"https://images.pokemontcg.io/sv3pt5/139_hires.png",
+"https://images.pokemontcg.io/sv3pt5/142_hires.png",
+"https://images.pokemontcg.io/sv3pt5/143_hires.png",
+"https://images.pokemontcg.io/sv3pt5/100_hires.png",
+"https://images.pokemontcg.io/sv3pt5/109_hires.png",
+"https://images.pokemontcg.io/sv3pt5/111_hires.png",
+"https://images.pokemontcg.io/sv3pt5/116_hires.png",
+"https://images.pokemontcg.io/sv3pt5/127_hires.png",
+"https://images.pokemontcg.io/sv3pt5/129_hires.png",
+"https://images.pokemontcg.io/sv3pt5/130_hires.png",
+"https://images.pokemontcg.io/sv3pt5/140_hires.png",
+"https://images.pokemontcg.io/sv3pt5/141_hires.png",
+"https://images.pokemontcg.io/sv3pt5/144_hires.png",
+"https://images.pokemontcg.io/sv3pt5/96_hires.png",
+"https://images.pokemontcg.io/sv3pt5/99_hires.png",
+"https://images.pokemontcg.io/sv3pt5/101_hires.png",
+"https://images.pokemontcg.io/sv3pt5/103_hires.png",
+"https://images.pokemontcg.io/sv3pt5/113_hires.png",
+"https://images.pokemontcg.io/sv3pt5/114_hires.png",
+"https://images.pokemontcg.io/sv3pt5/118_hires.png",
+"https://images.pokemontcg.io/sv3pt5/122_hires.png",
+"https://images.pokemontcg.io/sv3pt5/124_hires.png",
+"https://images.pokemontcg.io/sv3pt5/125_hires.png",
+"https://images.pokemontcg.io/sv3pt5/135_hires.png",
+"https://images.pokemontcg.io/sv3pt5/137_hires.png",
+"https://images.pokemontcg.io/sv3pt5/98_hires.png",
+"https://images.pokemontcg.io/sv3pt5/102_hires.png",
+"https://images.pokemontcg.io/sv3pt5/108_hires.png",
+"https://images.pokemontcg.io/sv3pt5/110_hires.png",
+"https://images.pokemontcg.io/sv3pt5/121_hires.png",
+"https://images.pokemontcg.io/sv3pt5/123_hires.png",
+"https://images.pokemontcg.io/sv3pt5/131_hires.png",
+"https://images.pokemontcg.io/sv3pt5/132_hires.png",
+"https://images.pokemontcg.io/sv3pt5/133_hires.png",
+"https://images.pokemontcg.io/sv3pt5/134_hires.png",
+"https://images.pokemontcg.io/sv3pt5/148_hires.png",
+"https://images.pokemontcg.io/sv3pt5/149_hires.png",
+"https://images.pokemontcg.io/sv3pt5/156_hires.png",
+"https://images.pokemontcg.io/sv3pt5/157_hires.png",
+"https://images.pokemontcg.io/sv3pt5/162_hires.png",
+"https://images.pokemontcg.io/sv3pt5/163_hires.png",
+"https://images.pokemontcg.io/sv3pt5/172_hires.png",
+"https://images.pokemontcg.io/sv3pt5/173_hires.png",
+"https://images.pokemontcg.io/sv3pt5/150_hires.png",
+"https://images.pokemontcg.io/sv3pt5/152_hires.png",
+"https://images.pokemontcg.io/sv3pt5/153_hires.png",
+"https://images.pokemontcg.io/sv3pt5/159_hires.png",
+"https://images.pokemontcg.io/sv3pt5/160_hires.png",
+"https://images.pokemontcg.io/sv3pt5/164_hires.png",
+"https://images.pokemontcg.io/sv3pt5/165_hires.png",
+"https://images.pokemontcg.io/sv3pt5/168_hires.png",
+"https://images.pokemontcg.io/sv3pt5/154_hires.png",
+"https://images.pokemontcg.io/sv3pt5/158_hires.png",
+"https://images.pokemontcg.io/sv3pt5/166_hires.png",
+"https://images.pokemontcg.io/sv3pt5/169_hires.png",
+"https://images.pokemontcg.io/sv3pt5/171_hires.png",
+"https://images.pokemontcg.io/sv3pt5/145_hires.png",
+"https://images.pokemontcg.io/sv3pt5/146_hires.png",
+"https://images.pokemontcg.io/sv3pt5/147_hires.png",
+"https://images.pokemontcg.io/sv3pt5/151_hires.png",
+"https://images.pokemontcg.io/sv3pt5/155_hires.png",
+"https://images.pokemontcg.io/sv3pt5/161_hires.png",
+"https://images.pokemontcg.io/sv3pt5/167_hires.png",
+"https://images.pokemontcg.io/sv3pt5/170_hires.png",
+"https://images.pokemontcg.io/sv3pt5/177_hires.png",
+"https://images.pokemontcg.io/sv3pt5/189_hires.png",
+"https://images.pokemontcg.io/sv3pt5/179_hires.png",
+"https://images.pokemontcg.io/sv3pt5/180_hires.png",
+"https://images.pokemontcg.io/sv3pt5/185_hires.png",
+"https://images.pokemontcg.io/sv3pt5/187_hires.png",
+"https://images.pokemontcg.io/sv3pt5/188_hires.png",
+"https://images.pokemontcg.io/sv3pt5/192_hires.png",
+"https://images.pokemontcg.io/sv3pt5/193_hires.png",
+"https://images.pokemontcg.io/sv3pt5/174_hires.png",
+"https://images.pokemontcg.io/sv3pt5/181_hires.png",
+"https://images.pokemontcg.io/sv3pt5/182_hires.png",
+"https://images.pokemontcg.io/sv3pt5/186_hires.png",
+"https://images.pokemontcg.io/sv3pt5/191_hires.png",
+"https://images.pokemontcg.io/sv3pt5/175_hires.png",
+"https://images.pokemontcg.io/sv3pt5/176_hires.png",
+"https://images.pokemontcg.io/sv3pt5/178_hires.png",
+"https://images.pokemontcg.io/sv3pt5/183_hires.png",
+"https://images.pokemontcg.io/sv3pt5/184_hires.png",
+"https://images.pokemontcg.io/sv3pt5/190_hires.png",
+"https://images.pokemontcg.io/sv3pt5/195_hires.png",
+"https://images.pokemontcg.io/sv3pt5/196_hires.png",
+"https://images.pokemontcg.io/sv3pt5/197_hires.png",
+"https://images.pokemontcg.io/sv3pt5/194_hires.png",
+"https://images.pokemontcg.io/sv3pt5/198_hires.png",
+"https://images.pokemontcg.io/sv3pt5/199_hires.png",
+"https://images.pokemontcg.io/sv3pt5/200_hires.png",
+"https://images.pokemontcg.io/sv3pt5/201_hires.png",
+"https://images.pokemontcg.io/sv3pt5/206_hires.png",
+"https://images.pokemontcg.io/sv3pt5/202_hires.png",
+"https://images.pokemontcg.io/sv3pt5/203_hires.png",
+"https://images.pokemontcg.io/sv3pt5/204_hires.png",
+"https://images.pokemontcg.io/sv3pt5/205_hires.png",
+"https://images.pokemontcg.io/sv3pt5/207_hires.png",
+];
+const cards = document.querySelector('.cards');
+cardImageUrls.forEach(url => {
+    const container = document.createElement('div')
+    container.className = 'container'
+
+    container.innerHTML = `
+        <div class="overlay"></div>
+        <div class="card"
+             style="background-image:url('${url}')">
+        </div>
+    `
+
+    const overlay = container.querySelector('.overlay')
+
+    container.addEventListener('mousemove', e => {
+        const x = e.offsetX
+        const y = e.offsetY
+
+        const rotateY = -1/5 * x + 20
+        const rotateX = 4/30 * y - 20
+
+        overlay.style.backgroundPosition =
+            `${x/5 + y/5}%`
+
+        container.style.transform =
+            `perspective(350px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`
+    })
+
+    cards.appendChild(container)
+});
+</script>
+
+<style>
+body{
+    margin:0;
+    padding:20px;
+    background:#111;
+}
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+}
+.container{
+    width:220px;
+    height:310px;
+    transition:all 0.1s;
+    position:relative;
+}
+.overlay{
+    position:absolute;
+    width:220px;
+    height:310px;
+    background:linear-gradient(105deg,
+    transparent 40%,
+    rgba(255,219,112,0.8) 45%,
+    rgba(132,50,255,0.6) 50%,
+    transparent 54%);
+    filter:brightness(1.2) opacity(0.8);
+    mix-blend-mode:color-dodge;
+    background-size:150% 150%;
+    background-position:100%;
+    pointer-events:none;
+}
+.card{
+    width:220px;
+    height:310px;
+    background-size:cover;
+    background-position:center;
+}
+</style>
+</html>
+
+
+
